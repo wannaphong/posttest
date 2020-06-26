@@ -20,6 +20,14 @@
                         Text : <input type="text" name="message">
                         <button type="submit">Save</button>
                     </form>
+                    <div>
+                        @foreach ($postall As $key => $value)
+                        <p>{{ $value->message }}</p>
+                    <a href="{{ route('del', [$value->postid]) }}">
+                        <button type="submit">Del</button>
+                    </a>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
