@@ -14,7 +14,12 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    You are logged in!<br/>
+                    <form action="{{ route('post') }}" method="POST">
+                        @csrf
+                        Text : <input type="text" name="message">
+                        <button type="submit">Save</button>
+                    </form>
                 </div>
             </div>
         </div>
