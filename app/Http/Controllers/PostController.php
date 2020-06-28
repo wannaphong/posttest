@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use Auth;
+use App\PostView;
 
 class PostController extends Controller
 {
@@ -17,7 +18,7 @@ class PostController extends Controller
         return redirect('/home');
     }
     public function showall(){
-        $postall = Post::all();
+        $postall = PostView::all();
         return view('home',compact('postall'));
     }
     public function del($id){

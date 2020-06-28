@@ -17,12 +17,12 @@
                     You are logged in!<br/>
                     <form action="{{ route('post') }}" method="POST">
                         @csrf
-                        Text : <input type="text" name="message">
+                        Text : <input type="text" name="message"><br>
                         <button type="submit">Save</button>
                     </form>
                     <div>
                         @foreach ($postall As $key => $value)
-                        <p>{{ $value->message }}</p>
+                        <p>{{ $value->message }} - เขียนโดย {{ $value->name }}</p>
                     <a href="{{ route('del', [$value->postid]) }}">
                         <button type="submit">Del</button>
                     </a>
