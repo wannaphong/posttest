@@ -24,4 +24,13 @@ class PostController extends Controller
         Post::Where("postid","=",$id)->delete();
         return redirect('/home');
     }
+    public function get_data2update($id){
+        $post = Post::Where("postid","=",$id)->first();
+        return view('edit',compact('post'));
+    }
+    public function update_data(Request $request, $id){
+        $storeData = $request->all();
+        Post::Where("postid","=",$id)->update($storeData);
+        return redirect('/home');
+    }
 }

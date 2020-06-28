@@ -26,6 +26,9 @@
                     <a href="{{ route('del', [$value->postid]) }}">
                         <button type="submit">Del</button>
                     </a>
+                        @if($value->user_id==Auth::id())
+                            <a href="{{ route('edit', [$value->postid]) }}"><button type="submit">edit</button></a>
+                        @endif
                         @endforeach
                     </div>
                 </div>

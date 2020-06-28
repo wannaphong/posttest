@@ -21,3 +21,5 @@ Route::get('/home', 'PostController@showall')->name('home');
 Route::post('/save','PostController@create')->name('post');
 Route::get('/del/{id}', 'PostController@del')->name('del');
 // {id}
+Route::get('/edit/{id}', 'PostController@get_data2update')->name('edit');
+Route::get('/update/{id}','PostController@update_data')->name('update');
