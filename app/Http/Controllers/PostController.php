@@ -6,9 +6,14 @@ use Illuminate\Http\Request;
 use App\Post;
 use Auth;
 use App\PostView;
+use App\User;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function create()
     {
         $post = new Post();
@@ -17,9 +22,15 @@ class PostController extends Controller
         $post->save();
         return redirect('/home');
     }
-    public function showall(){
-        $postall = PostView::all();
-        return view('home',compact('postall'));
+    public function showall($id=null){
+        if($id == null){
+            $postall = PostView::all();
+        }
+        else{
+            $postall = PostView::where('user_id', '=', $id)->get();
+        }
+        $userall = User::all();
+        return view('home',compact('postall'),compact('userall'));
     }
     public function del($id){
         Post::Where("postid","=",$id)->delete();

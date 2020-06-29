@@ -20,6 +20,15 @@
                         Text : <input type="text" name="message"><br>
                         <button type="submit">Save</button>
                     </form>
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">ดูผู้ใช้
+                        <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                          @foreach ($userall As $key => $value)
+                                <li><a href="{{ route('home2', [$value->id]) }}">{{ $value->name }}</a></li>
+                          @endforeach
+                        </ul>
+                      </div>
                     <div>
                         @foreach ($postall As $key => $value)
                         <p>{{ $value->message }} - เขียนโดย {{ $value->name }}</p>
