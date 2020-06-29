@@ -18,7 +18,7 @@ class PostController extends Controller
     {
         $post = new Post();
         $post->message = request('message');
-        $post->user_id = Auth::id();
+        $post->user_id = Auth::id(); // ดึง ID user
         $post->save();
         return redirect('/home');
     }

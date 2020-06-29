@@ -14,7 +14,7 @@ class CreatePostviewView extends Migration
     {
         DB::statement("CREATE VIEW postview AS
             SELECT post.postid as postid, post.message as message,
-            post.user_id as user_id, users.name as name
+            post.user_id as user_id, users.name as name,post.created_at as created_at,post.updated_at as updated_at
         FROM post
         INNER JOIN users
         ON post.user_id = users.id;");
