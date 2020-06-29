@@ -9,10 +9,9 @@
 
                 <div class="card-body">
                     <form action="{{ route('update', [$post->postid]) }}" method="GET">
-                        <input type="hidden" name="postid" value="{{ $post->postid }}">
-                        Message : <input type="text" name="message" value="{{ $post->message }}" ><br>
-                        <button type="submit" class="btn">Update</button>
-                        <button type="reset" class="btn">Reset</button>
+                        Message : <input type="text" name="message" value="{{ $post->message }}" required><br>
+                        <button type="submit" class="btn btn-success">Update</button>
+                        <button type="reset" class="btn btn-danger">Reset</button>
                     </form>
 
                 </div>

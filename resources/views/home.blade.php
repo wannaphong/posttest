@@ -17,7 +17,7 @@
                     สวัสดีคุณ {{ Auth::user()->name }}<br/>
                     <form action="{{ route('post') }}" method="POST">
                         @csrf
-                        Text : <input type="text" name="message" class="form-control"><br>
+                        Text : <input type="text" name="message" class="form-control" required><br>
                         <button type="submit" class="btn btn-success">Save</button>
                     </form>
                     <div class="dropdown">
