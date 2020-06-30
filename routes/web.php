@@ -19,6 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'PostController@showall')->name('home');
 Route::get('/home/{id}', 'PostController@showall')->name('home2');
+Route::get('/find', 'PostController@find')->name('home3');
 Route::post('/save','PostController@create')->name('post');
 Route::get('/del/{id}', 'PostController@del')->name('del');
 // {id}

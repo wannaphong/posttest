@@ -22,6 +22,12 @@ class PostController extends Controller
         $post->save();
         return redirect('/home');
     }
+    public function find(Request $request){
+        $find= $request->find;
+        $postall = PostView::where('message','like', '%'. $find.'%')->paginate(5);
+        $userall = User::all();
+        return view('home',compact('postall'),compact('userall'));
+    }
     public function showall($id=null){
         if($id == null){
             $postall = PostView::paginate(5);

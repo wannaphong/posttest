@@ -20,6 +20,11 @@
                         Text : <input type="text" name="message" class="form-control" required><br>
                         <button type="submit" class="btn btn-success">Save</button>
                     </form>
+                    <form action="{{ route('home3') }}" method="GET">
+                        @csrf
+                        ค้นหา : <input type="text" name="find" class="form-control" required><br>
+                        <button type="submit" class="btn btn-success">ค้นหาเลย</button>
+                    </form>
                     {{ $postall->links() }}
                     <div class="dropdown">
                         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">ดูผู้ใช้
