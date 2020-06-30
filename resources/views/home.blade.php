@@ -25,7 +25,7 @@
                         ค้นหา : <input type="text" name="find" class="form-control" required><br>
                         <button type="submit" class="btn btn-success">ค้นหาเลย</button>
                     </form>
-                    {{ $postall->links() }}
+
                     <div class="dropdown">
                         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">ดูผู้ใช้
                         <span class="caret"></span></button>
@@ -76,6 +76,7 @@
                         @endif
                         @endforeach
                     </div>
+                    <div class="d-flex justify-content-center">{{ $postall->links() }}</div>
                 </div>
             </div>
         </div>
