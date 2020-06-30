@@ -26,7 +26,18 @@ class PostController extends Controller
         $find= $request->find;
         $postall = PostView::where('message','like', '%'. $find.'%')->paginate(5);
         $userall = User::all();
-        return view('home',compact('postall'),compact('userall'));
+        if($postall->isEmpty()) // เช็กถ้าว่าง
+        {
+            $message = 'ไม่พบข้อมูล '.$find;
+            return view('home',[
+                                'message'=>$message,
+                                'userall'=>$userall,
+                                'postall'=>$postall
+                                ]); // กรณีคืนค่า compact มากกว่าา 2 ตัวแปร ต้องใช้ array
+        }
+        else{
+            return view('home',compact('postall'),compact('userall'));
+        }
     }
     public function showall($id=null){
         if($id == null){

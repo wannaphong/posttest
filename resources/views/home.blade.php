@@ -6,7 +6,11 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header"><marquee>Post >=<</marquee></div>
-
+                @isset($message)
+                <div class="alert alert-danger">
+                    <strong>{{$message}}</strong>
+                </div>
+            @endisset
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -37,6 +41,7 @@
                         </ul>
                       </div>
                     <div>
+
                         @foreach ($postall As $key => $value)
                         <p>วันที่ {{ $value->created_at->format('d/m/Y h:i') }}</p>
                         <p>{{ $value->message }} - เขียนโดย {{ $value->name }}</p>
