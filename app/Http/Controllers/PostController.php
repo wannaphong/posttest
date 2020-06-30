@@ -24,10 +24,10 @@ class PostController extends Controller
     }
     public function showall($id=null){
         if($id == null){
-            $postall = PostView::all();
+            $postall = PostView::paginate(5);
         }
         else{
-            $postall = PostView::where('user_id', '=', $id)->get();
+            $postall = PostView::where('user_id', '=', $id)->paginate(5);
         }
         $userall = User::all();
         return view('home',compact('postall'),compact('userall'));

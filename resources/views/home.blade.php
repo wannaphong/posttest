@@ -20,6 +20,7 @@
                         Text : <input type="text" name="message" class="form-control" required><br>
                         <button type="submit" class="btn btn-success">Save</button>
                     </form>
+                    {{ $postall->links() }}
                     <div class="dropdown">
                         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">ดูผู้ใช้
                         <span class="caret"></span></button>
