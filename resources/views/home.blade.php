@@ -27,7 +27,15 @@
                     <form action="{{ route('home3') }}" method="GET">
                         @csrf
                         ค้นหา : <input type="text" name="find" class="form-control" required><br>
+                        <select name="user_id">
+                                <option>ทั้งหมด</option>
+                            @foreach ($userall As $key => $value)
+                                <option value="{{ $value->id }}">{{ $value->name }}</option>
+                            @endforeach
+                        </select>
+
                         <button type="submit" class="btn btn-success">ค้นหาเลย</button>
+
                     </form>
 
                     <div class="dropdown">

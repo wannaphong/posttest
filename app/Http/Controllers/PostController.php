@@ -23,7 +23,8 @@ class PostController extends Controller
         return redirect('/home');
     }
     public function find(Request $request){
-        $find= $request->find;
+        $find = $request->find;
+        $user_id = $request->user_id;
         $postall = PostView::where('message','like', '%'. $find.'%')->paginate(5);
         $userall = User::all();
         if($postall->isEmpty()) // เช็กถ้าว่าง
@@ -34,6 +35,10 @@ class PostController extends Controller
                                 'userall'=>$userall,
                                 'postall'=>$postall
                                 ]); // กรณีคืนค่า compact มากกว่าา 2 ตัวแปร ต้องใช้ array
+        }
+        else if($user_id!=null){
+            $postall = PostView::where([['message','like', '%'. $find.'%'],['user_id','=',$user_id]])->paginate(5);
+            return view('home',compact('postall'),compact('userall'));
         }
         else{
             return view('home',compact('postall'),compact('userall'));
