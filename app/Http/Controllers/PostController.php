@@ -25,7 +25,14 @@ class PostController extends Controller
     public function find(Request $request){
         $find = $request->find;
         $user_id = $request->user_id;
-        $postall = PostView::where('message','like', '%'. $find.'%')->paginate(5);
+        if($user_id=='all')
+        {
+            $postall = PostView::where('message','like', '%'. $find.'%')->paginate(5);
+        }
+        else
+        {
+            $postall = PostView::where([['message','like', '%'. $find.'%'],['user_id','=',$user_id]])->paginate(5);
+        }
         $userall = User::all();
         if($postall->isEmpty()) // เช็กถ้าว่าง
         {
@@ -38,7 +45,7 @@ class PostController extends Controller
         }
         else if($user_id!='all'){
             //dd($user_id);
-            $postall = PostView::where([['message','like', '%'. $find.'%'],['user_id','=',$user_id]])->paginate(5);
+
             return view('home',compact('postall'),compact('userall'));
         }
         else{
