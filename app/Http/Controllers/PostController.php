@@ -36,7 +36,8 @@ class PostController extends Controller
                                 'postall'=>$postall
                                 ]); // กรณีคืนค่า compact มากกว่าา 2 ตัวแปร ต้องใช้ array
         }
-        else if($user_id!=null){
+        else if($user_id!='all'){
+            //dd($user_id);
             $postall = PostView::where([['message','like', '%'. $find.'%'],['user_id','=',$user_id]])->paginate(5);
             return view('home',compact('postall'),compact('userall'));
         }

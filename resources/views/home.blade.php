@@ -28,7 +28,7 @@
                         @csrf
                         ค้นหา : <input type="text" name="find" class="form-control" required><br>
                         <select name="user_id">
-                                <option>ทั้งหมด</option>
+                                <option value="all">ทั้งหมด</option>
                             @foreach ($userall As $key => $value)
                                 <option value="{{ $value->id }}">{{ $value->name }}</option>
                             @endforeach
